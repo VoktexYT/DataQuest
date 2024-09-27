@@ -6,4 +6,4 @@ int main()
 	SERVER_QUEST::Server server;
 	server.display();
 	system("pause");
-}
+} 
