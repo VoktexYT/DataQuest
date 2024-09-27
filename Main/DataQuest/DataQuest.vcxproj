@@ -24,7 +24,7 @@
     <ProjectGuid>{428309c1-cd97-4fe4-bc52-6e1cc735280c}</ProjectGuid>
     <RootNamespace>DataQuest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Main</ProjectName>
+    <ProjectName>DataQuest</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

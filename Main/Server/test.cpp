@@ -1,12 +1,10 @@
 #include <iostream>
 
 
-#include "serv.h"
-
-
 int main()
 {
-	Server_Quest::Server server;
-
-	server.display();
+	for (int i = 0; i < 100000000; i++)
+	{
+		std::cout << i << std::endl;
+	}
 }
