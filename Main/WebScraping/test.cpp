@@ -21,101 +21,118 @@ int main()
 */
 
 // test Web-scrapping utilisant les blibliothèque :
-#include <Windows.h> // Inclut les définition pour les fonctionnalités du système WINDOWS
+#include <windows.h> // Inclut les définition pour les fonctionnalités du système WINDOWS
 #include <winhttp.h> // Contient les définition spécifique à L'API WinHTTP, qui gère les connexions HTTP
 #include <iostream> // Entrée-Sortie
-using namespace std;
 
-#pragma comment(lib, "winhttp.lib") // Lie la Blibiothèque winhttp.lib, permet l'utilisation des fonctions de WinHTTP.h
+#pragma comment(lib, "winhttp.lib")
 
 int main()
 {
 	setlocale(LC_ALL, "");
 	// URL de la page à WEBSCRAP
-	/* Ne fonctionne pas.
-	string adressWeb = "o";
-	cout << "Entrez l'url de la page désiré: ";
-	cin >> adressWeb;
+	// Ne fonctionne pas.
+	//string adressWeb = "o";
+	//cout << "Entrez l'url de la page désiré: ";
+	//cin >> adressWeb;
 
-	LPCWSTR url = adressWeb;
-	*/
+	//LPCWSTR url = adressWeb;
+	// URL de la page à scraper
+	LPCWSTR url = L"www.wikipedia.org";
+	LPCWSTR chemin = L"/";
 
-	// LPCWSTR est une chaine unicode (Large pointer to constant wide string)
-	LPCWSTR url = L"www.wikipedia.org/"; // url = hote/domaine
-	LPCWSTR chemin = L"/"; // le chemin
-
-	// Initialisation de la session a l'aide de WinHttp
-	
-	HINTERNET hSession = WinHttpOpen(L"Webscrapper/1.0",
+	// Initialiser une session avec WinHTTP
+	HINTERNET hSession = WinHttpOpen(L"WebScraper/1.0",
 		WINHTTP_ACCESS_TYPE_DEFAULT_PROXY,
 		WINHTTP_NO_PROXY_NAME,
 		WINHTTP_NO_PROXY_BYPASS, 0);
 
-	// Vérifis si la session a été créer avec succès
+	// Vérifier si la session a été créée avec succès
+	if (hSession) {
+		// Connecter à l'hôte
+		HINTERNET hConnection = WinHttpConnect(hSession, url,
+			INTERNET_DEFAULT_HTTP_PORT, 0);
 
-	if (hSession)
-	{
-		HINTERNET hConnection = WinHttpConnect(hSession, url, INTERNET_DEFAULT_HTTPS_PORT, 0);
-
-		if (hConnection)
-		{
-			 // Prépare une requête HTTP
-
+		if (hConnection) {
+			// Préparer une requête HTTP
 			HINTERNET hRequete = WinHttpOpenRequest(hConnection, L"GET", chemin,
 				NULL, WINHTTP_NO_REFERER,
+				WINHTTP_DEFAULT_ACCEPT_TYPES,
+				0);
 
-				WINHTTP_DEFAULT_ACCEPT_TYPES, 0);
-			// Vérifie si la requete a été ouverte avec succès
-			if (hRequete)
-			{
-				// Envoie la requête
-				BOOL bResulats = WinHttpSendRequest(hRequete, WINHTTP_NO_ADDITIONAL_HEADERS, 0, WINHTTP_NO_REQUEST_DATA, 0, 0, 0);
+			// Vérifier si la requête a été ouverte avec succès
+			if (hRequete) {
+				// Envoyer la requête
+				BOOL bResults = WinHttpSendRequest(hRequete,
+					WINHTTP_NO_ADDITIONAL_HEADERS,
+					0, WINHTTP_NO_REQUEST_DATA, 0,
+					0, 0);
 
-				// Reçois la réponse
-				if (bResulats)
-				{
-					bResulats = WinHttpReceiveResponse(hRequete, NULL);
+				// Recevoir la réponse
+				if (bResults) {
+					bResults = WinHttpReceiveResponse(hRequete, NULL);
 				}
-				// Si la réponse a été reçu avec succès
-				if (bResulats)
-				{
+
+				// Si la réponse a été reçue avec succès
+				if (bResults) {
 					DWORD dwSize = 0;
-					DWORD dwtelechargee = 0;
-					LPSTR pszTamponSortie;
-					
-					BOOL bContinue = TRUE;
+					DWORD dwDownloaded = 0;
+					LPSTR pszSortieTempon;
+					BOOL  bContinue = TRUE;
 
-					// lis les données en boucle
-
-					do
-					{
-						// Vérifie la taille des donnés disponible
+					// Lire les données en boucle
+					do {
+						// Vérifier la taille des données disponibles
 						dwSize = 0;
-						if (!WinHttpQueryDataAvailable(hRequete, &dwSize))
-						{
-							cout << "Erreur Lors de la vérification des données disponible.\n";
+						if (!WinHttpQueryDataAvailable(hRequete, &dwSize)) {
+							std::cout << "Erreur lors de la vérification des données disponibles.\n";
 						}
-						// Vérifie si les données sont disponible
-						if (dwSize > 0)
-						{
-							// Alloue un tempon pour les données
-							pszTamponSortie = new char[dwSize + 1];
-							// vérifie si l'allocation de la mémoire à réeussi
-							if (!pszTamponSortie)
-							{
-								cout << "Mémoire insuffisante.\n";
+
+						// Si des données sont disponibles
+						if (dwSize > 0) {
+							// Allouer un tampon pour les données
+							pszSortieTempon = new char[dwSize + 1];
+
+							// Vérifier si l'allocation mémoire a réussi
+							if (!pszSortieTempon) {
+								std::cout << "Mémoire insuffisante.\n";
+								dwSize = 0;
+							}
+							else {
+								// Initialiser le tampon
+								ZeroMemory(pszSortieTempon, dwSize + 1);
+
+								// Lire les données
+								if (WinHttpReadData(hRequete, (LPVOID)pszSortieTempon,
+									dwSize, &dwDownloaded)) {
+									// Afficher les données reçues
+									std::cout << pszSortieTempon;
+								}
+
+								// Libérer la mémoire allouée
+								delete[] pszSortieTempon;
 							}
 						}
-
-					} while (true);
-
+						// Continuer à lire tant qu'il y a des données disponibles
+					} while (dwSize > 0);
 				}
+
+				// Fermer la requête
+				WinHttpCloseHandle(hRequete);
 			}
+
+			// Fermer la connexion
+			WinHttpCloseHandle(hConnection);
 		}
 
+		// Fermer la session
+		WinHttpCloseHandle(hSession);
 	}
+	else {
+		std::cout << "Erreur lors de l'ouverture de la session WinHTTP.\n";
+	}
+	std::cout << "\n\n\n\nCodée par Bone230\nVersion 1.6";
 
-
-
+	return 0;
 }
 
