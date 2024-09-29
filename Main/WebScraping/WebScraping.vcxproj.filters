@@ -18,9 +18,15 @@
     <ClInclude Include="webscraping.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bigstring.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bigstring.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

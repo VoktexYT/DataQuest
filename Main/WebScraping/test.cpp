@@ -24,21 +24,22 @@ int main()
 #include <windows.h> // Inclut les définition pour les fonctionnalités du système WINDOWS
 #include <winhttp.h> // Contient les définition spécifique à L'API WinHTTP, qui gère les connexions HTTP
 #include <iostream> // Entrée-Sortie
+#include "bigstring.h"
 
 #pragma comment(lib, "winhttp.lib")
+
 
 int main()
 {
 	setlocale(LC_ALL, "");
-	// URL de la page à WEBSCRAP
-	// Ne fonctionne pas.
-	//string adressWeb = "o";
-	//cout << "Entrez l'url de la page désiré: ";
-	//cin >> adressWeb;
+	
+	// Demande l'url à l'utilisateur
 
-	//LPCWSTR url = adressWeb;
-	// URL de la page à scraper
-	LPCWSTR url = L"www.wikipedia.org";
+	std::string entreeURL;
+	std::cout << "Entrée l'url d'un site Web sous se format : www.example.com\n\nToi: ";
+	std::cin >> entreeURL;
+	system("cls");
+	std::wstring url = stringAGrandString(entreeURL);
 	LPCWSTR chemin = L"/";
 
 	// Initialiser une session avec WinHTTP
@@ -50,7 +51,7 @@ int main()
 	// Vérifier si la session a été créée avec succès
 	if (hSession) {
 		// Connecter à l'hôte
-		HINTERNET hConnection = WinHttpConnect(hSession, url,
+		HINTERNET hConnection = WinHttpConnect(hSession, url.c_str(),
 			INTERNET_DEFAULT_HTTP_PORT, 0);
 
 		if (hConnection) {
@@ -131,7 +132,7 @@ int main()
 	else {
 		std::cout << "Erreur lors de l'ouverture de la session WinHTTP.\n";
 	}
-	std::cout << "\n\n\n\nCodée par Bone230\nVersion 1.6";
+	std::cout << "\n\n\n\nCodée par Bone230\nVersion 2.0";
 
 	return 0;
 }
