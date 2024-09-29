@@ -1,6 +1,8 @@
 #ifndef SERVER_H
 #define SERVER_H
 
+
+
 #include <iostream>
 #include "../WebScraping/webscraping.h"
 

@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-
+/* Exemple fait par ubert
 namespace WEB_SCRAPING
 {
 	class WebScraping
@@ -15,6 +15,6 @@ namespace WEB_SCRAPING
 			}
 	};
 }
-
+*/
 
 #endif // WEBSCRAPING_H
