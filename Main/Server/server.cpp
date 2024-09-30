@@ -1,3 +1,12 @@
+/*
+* 
+* WARNING
+* 
+* It's very important to be up to date with the C++ langage for the version 17
+* 
+*/
+
+
 #include <iostream>
 
 #include "server.h"
