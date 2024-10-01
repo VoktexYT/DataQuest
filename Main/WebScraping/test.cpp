@@ -42,7 +42,8 @@ int main()
 
 
 
-	std::cout << "\n\n\n\nCodée par Bone230\nVersion 2.3";
+	// Codée par Bone230 
+	// Version 2.3
 
 	return 0;
 }
