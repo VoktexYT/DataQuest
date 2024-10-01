@@ -21,12 +21,24 @@
     <ClInclude Include="bigstring.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="getAllHtml.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="getAllText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="bigstring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getAllHtml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="getAllText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

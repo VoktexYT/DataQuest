@@ -2,6 +2,7 @@
 #include <winhttp.h>
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <locale>
 #include <codecvt>
 #include "bigstring.h"
