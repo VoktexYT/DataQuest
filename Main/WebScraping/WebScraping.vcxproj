@@ -127,15 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="bigstring.h" />
-    <ClInclude Include="getAllHtml.h" />
-    <ClInclude Include="getAllText.h" />
+    <ClInclude Include="Fonctions.h" />
     <ClInclude Include="webscraping.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bigstring.cpp" />
-    <ClCompile Include="getAllHtml.cpp" />
-    <ClCompile Include="getAllText.cpp" />
+    <ClCompile Include="Fonctions.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
