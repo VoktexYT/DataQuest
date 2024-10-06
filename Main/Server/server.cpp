@@ -11,10 +11,14 @@
 
 #include "server.h"
 
+#include "crow.h"
+
 int main()
 {
     SERVER_QUEST::CrowServer Cs;
     Cs.start();
+
+    std::cout << "Test123" << std::endl;
 
     return 0;
 }

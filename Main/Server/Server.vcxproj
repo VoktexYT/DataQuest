@@ -71,6 +71,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\AsioPackage;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\CrowPackage;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -105,8 +108,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\ubgue\DESKTOP\DataQuest\Main\Server\asio\asio\include;C:\Users\ubgue\DESKTOP\DataQuest\Main\Server\Crow\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\vboxuser\Desktop\DataQuest\Main\Server\AsioPackage;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\CrowPackage;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalUsingDirectories>C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\AsioPackage;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\CrowPackage;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
