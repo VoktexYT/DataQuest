@@ -8,6 +8,7 @@
 #define GET_ALL_HTML_URL "/get-all-html"
 
 #pragma once
+
 #include <iostream>
 #include <functional>
 #include "../WebScraping/webscraping.h"
