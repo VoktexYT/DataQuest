@@ -3,7 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Main", "DataQuest\DataQuest.vcxproj", "{428309C1-CD97-4FE4-BC52-6E1CC735280C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataQuest", "DataQuest\DataQuest.vcxproj", "{428309C1-CD97-4FE4-BC52-6E1CC735280C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EBDE755B-5A56-495D-B81D-E6B59EC9E6EE} = {EBDE755B-5A56-495D-B81D-E6B59EC9E6EE}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Server", "Server\Server.vcxproj", "{E0AA5A65-BF6B-4980-ACFB-51B14BE6B043}"
 EndProject

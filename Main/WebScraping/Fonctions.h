@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 std::wstring stringAGrandString(const std::string& str);
 

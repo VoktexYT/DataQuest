@@ -6,6 +6,8 @@
 #include <locale>
 #include <codecvt>
 
+#include "Fonctions.h"
+
 // Fonction pour convertir std::string en std::wstring
 std::wstring stringAGrandString(const std::string& str)
 {

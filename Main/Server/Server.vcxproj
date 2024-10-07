@@ -108,9 +108,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\vboxuser\Desktop\DataQuest\Main\Server\AsioPackage;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\CrowPackage;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\vboxuser\Desktop\DataQuest\Main\WebScraping;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\AsioPackage;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\CrowPackage;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalUsingDirectories>C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\AsioPackage;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\CrowPackage;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>C:\Users\vboxuser\Desktop\DataQuest\Main\WebScraping;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\AsioPackage;C:\Users\vboxuser\Desktop\DataQuest\Main\Server\lib\CrowPackage;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,10 +134,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="server.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebScraping\WebScraping.vcxproj">
+      <Project>{ebde755b-5a56-495d-b81d-e6b59ec9e6ee}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
